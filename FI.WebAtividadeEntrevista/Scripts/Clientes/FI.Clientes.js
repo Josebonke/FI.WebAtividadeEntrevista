@@ -61,13 +61,3 @@ function ModalDialog(titulo, texto) {
     $('#' + random).modal('show');
 }
 
-$(document).ready(function () {
-    // Máscara para CPF
-    $('#cpf').mask('000.000.000-00');
-
-    // Máscara para CEP
-    $('#CEP').mask('00000-000');
-
-    // Máscara para Telefone
-    $('#Telefone').mask('(00) 00000-0000');
-});

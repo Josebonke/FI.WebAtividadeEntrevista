@@ -133,6 +133,7 @@
     <Content Include="App_Data\BancoDeDados_log.ldf">
       <DependentUpon>BancoDeDados.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\beneficiarios.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -345,6 +346,7 @@
     <Content Include="Scripts\jtable\themes\metro\pink\jtable.less" />
     <Content Include="Scripts\jtable\themes\metro\purple\jtable.less" />
     <Content Include="Scripts\jtable\themes\metro\red\jtable.less" />
+    <Content Include="Views\Beneficiarios\FormsBeneficiarios.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\themes\base\minified\images\" />

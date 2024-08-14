@@ -33,6 +33,9 @@ $(document).ready(function () {
             }
         });
 
+   
+
+
     //Load student list from server
     if (document.getElementById("gridClientes"))
         $('#gridClientes').jtable('load');
