@@ -9,6 +9,7 @@ $(document).ready(function () {
         $('#formCadastro #Estado').val(obj.Estado);
         $('#formCadastro #Cidade').val(obj.Cidade);
         $('#formCadastro #Logradouro').val(obj.Logradouro);
+        $('#formCadastro #Cpf').val(obj.Cpf);
         $('#formCadastro #Telefone').val(obj.Telefone);
     }
 
@@ -21,6 +22,7 @@ $(document).ready(function () {
             data: {
                 "NOME": $(this).find("#Nome").val(),
                 "CEP": $(this).find("#CEP").val(),
+                "Cpf": $(this).find("#Cpf").val(),
                 "Email": $(this).find("#Email").val(),
                 "Sobrenome": $(this).find("#Sobrenome").val(),
                 "Nacionalidade": $(this).find("#Nacionalidade").val(),
@@ -31,10 +33,12 @@ $(document).ready(function () {
             },
             error:
             function (r) {
-                if (r.status == 400)
+                if (r.status == 400 && r.statusText == "")
                     ModalDialog("Ocorreu um erro", r.responseJSON);
                 else if (r.status == 500)
                     ModalDialog("Ocorreu um erro", "Ocorreu um erro interno no servidor.");
+                else if (r.status == 400 && !r.statusText == "")
+                    ModalDialog("Aviso!", r.responseJSON);
             },
             success:
             function (r) {

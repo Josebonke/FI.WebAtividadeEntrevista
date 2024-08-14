@@ -1,6 +1,6 @@
 ﻿document.addEventListener('DOMContentLoaded', function () {
    
-    document.getElementById('cpf').addEventListener('input', function (e) {
+    document.getElementById('Cpf').addEventListener('input', function (e) {
         let value = e.target.value.replace(/\D/g, ''); 
         if (value.length > 11) {
             value = value.slice(0, 11);

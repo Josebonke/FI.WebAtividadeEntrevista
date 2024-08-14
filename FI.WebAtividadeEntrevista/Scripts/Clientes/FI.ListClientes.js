@@ -16,8 +16,12 @@ $(document).ready(function () {
                     title: 'Nome',
                     width: '50%'
                 },
+                Cpf: {
+                    title: 'Cpf',
+                    width: '25%',
+                },
                 Email: {
-                    title: 'Email',
+                    title: 'EmDail',
                     width: '35%'
                 },
                 Alterar: {
