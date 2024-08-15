@@ -8,7 +8,7 @@ namespace FI.AtividadeEntrevista.DAL
     /// <summary>
     /// Classe de acesso a dados de Cliente
     /// </summary>
-    internal class DaoCliente : AcessoDados
+    internal class DaoBeneficiario : AcessoDados
     {
         /// <summary>
         /// Inclui um novo cliente

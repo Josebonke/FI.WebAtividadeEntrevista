@@ -23,7 +23,7 @@ namespace WebAtividadeEntrevista.Controllers
         }
 
         [HttpPost]
-        public JsonResult Incluir(ClienteModelDTO dto)
+        public ActionResult Incluir(ClienteModelDTO dto)
         {
             BoCliente bo = new BoCliente();
             ClienteModel model = new ClienteModel(dto);
@@ -60,7 +60,7 @@ namespace WebAtividadeEntrevista.Controllers
                 });
 
            
-                return Json("Cadastro efetuado com sucesso");
+                return Json(model);
             }
         }
 
