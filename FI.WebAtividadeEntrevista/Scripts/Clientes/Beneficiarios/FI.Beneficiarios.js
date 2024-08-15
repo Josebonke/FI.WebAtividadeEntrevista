@@ -1,34 +1,22 @@
 ﻿
-$(document).ready(function () {
-    $('#formCadastroBeneficiario').submit(function (e) {
-        e.preventDefault();
-        $.ajax({
-            url: 'Nene',
-            method: "POST",
-            data: {
-                "NOME": $(this).find("#Nome").val(),              
-                "Cpf": $(this).find("#Cpf").val(),
-                
-            },
+function Incluir() {
+    var formData = $('#formCadastroBeneficiario').serialize();
 
-            
-            error:
-            function (r) {
-                if (r.status == 400)
-                    ModalDialog("Aviso", r.responseJSON);
-                else if (r.status == 500)
-                    ModalDialog("Ocorreu um erro", "Ocorreu um erro interno no servidor.");
-                
-            },
-            success:
-            function (r) {
-                ModalDialog("Sucesso!", r)
-                $("#formCadastro")[0].reset();
-            }
-        });
-    })
-    
-})
+    $.ajax({
+        type: 'POST',
+        url: '/Beneficiarios/Incluir',
+        data: formData,
+        success: function (result) {
+            // Tratar a resposta do servidor
+            alert('Beneficiário incluído com sucesso!');
+            $('#modalBeneficiarios').modal('hide');
+        },
+        error: function (error) {
+            // Tratar erros
+            alert('Erro ao incluir beneficiário!');
+        }
+    });
+}
 
 
 function ModalDialog(titulo, texto) {

@@ -6,10 +6,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FI.AtividadeEntrevista.DML;
+using Microsoft.Ajax.Utilities;
+using System.Web.UI.WebControls;
 
 namespace WebAtividadeEntrevista.Controllers
 {
-    public class BeneficiarioController : Controller
+    public class BeneficiariosController : Controller
     {
         public ActionResult Index()
         {
@@ -23,10 +25,11 @@ namespace WebAtividadeEntrevista.Controllers
         }
 
         [HttpPost]
-        public JsonResult Incluir(ClienteModel model)
+        public JsonResult Incluir( BeneficiarioModelDto dto)
         {
-            BoCliente bo = new BoCliente();
+            BoBeneficiario bo = new BoBeneficiario();
 
+            BeneficiarioModel model = new BeneficiarioModel(dto);
             if (!this.ModelState.IsValid)
             {
                 List<string> erros = (from item in ModelState.Values
@@ -36,36 +39,31 @@ namespace WebAtividadeEntrevista.Controllers
                 Response.StatusCode = 400;
                 return Json(string.Join(Environment.NewLine, erros));
             }
-            else if (bo.VerificarExistencia(model.Cpf))
-            {
-                Response.StatusCode = 400;
-                return Json("Cpf Já Existe em Nossa Base Por Favor Verificar");
-            }
+            //else if (bo.VerificarExistencia(model.Cpf))
+            //{
+            //    Response.StatusCode = 400;
+            //    return Json("Cpf Já Existe em Nossa Base Por Favor Verificar");
+            //}
             else
             {
 
-                model.Id = bo.Incluir(new Cliente()
+                bo.Incluir(new Beneficiario()
                 {
-                    Cep = model.CEP,
-                    Cidade = model.Cidade,
-                    Email = model.Email,
-                    Estado = model.Estado,
-                    Logradouro = model.Logradouro,
-                    Nacionalidade = model.Nacionalidade,
+                    Id = model.Id,
                     Nome = model.Nome,
-                    Sobrenome = model.Sobrenome,
-                    Telefone = model.Telefone,
                     Cpf = model.Cpf,
-                });
+                    IdCliente = model.IdCliente
+                }); 
 
 
-                return Json("Cadastro efetuado com sucesso");
             }
+                return Json("Cadastro efetuado com sucesso");
         }
 
         [HttpPost]
-        public JsonResult Alterar(ClienteModel model)
+        public JsonResult Alterar(ClienteModelDTO dto)
         {
+            ClienteModel model = new ClienteModel(dto);
             BoCliente bo = new BoCliente();
 
             if (!this.ModelState.IsValid)

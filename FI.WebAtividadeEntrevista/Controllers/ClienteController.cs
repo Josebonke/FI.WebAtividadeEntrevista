@@ -23,9 +23,10 @@ namespace WebAtividadeEntrevista.Controllers
         }
 
         [HttpPost]
-        public JsonResult Incluir(ClienteModel model)
+        public JsonResult Incluir(ClienteModelDTO dto)
         {
             BoCliente bo = new BoCliente();
+            ClienteModel model = new ClienteModel(dto);
 
             if (!this.ModelState.IsValid)
             {
@@ -64,10 +65,10 @@ namespace WebAtividadeEntrevista.Controllers
         }
 
         [HttpPost]
-        public JsonResult Alterar(ClienteModel model)
+        public JsonResult Alterar(ClienteModelDTO dto)
         {
             BoCliente bo = new BoCliente();
-       
+            ClienteModel model = new ClienteModel(dto);
             if (!this.ModelState.IsValid)
             {
                 List<string> erros = (from item in ModelState.Values

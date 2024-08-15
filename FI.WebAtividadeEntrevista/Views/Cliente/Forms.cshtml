@@ -3,8 +3,10 @@
     @*<head>
         <link rel="stylesheet" href="~/Content/Site.css" asp-append-version="true" />
     </head>*@
+
 <body>
     <script src="~/Scripts/Clientes/mask.js" asp-append-version="true"></script>
+    <script src="~/Scripts/Clientes/Beneficiarios/FI.Beneficiarios.js" asp-append-version="true"></script>
     <form id="formCadastro" method="post">
         <div class="row">
             <div class="col-md-6">
@@ -124,8 +126,8 @@
                                 <input required="required"
                                        type="text"
                                        class="form-control"
-                                       id="cpf-Beneficiario"
-                                       name="cpf-Beneficiario"
+                                       id="cpfBeneficiario"
+                                       name="cpfBeneficiario"
                                        placeholder="Ex.: 010.011.111-100" maxlength="15">
                             </span>
                             <span class="input-nome">
@@ -139,7 +141,7 @@
                                        maxlength="50">
                             </span>
                             <span class="btn-incluir">
-                                <button type ="submit" class="btn btn-md btn-success">Incluir</button>
+                                <button type="button" id="btnIncluir" onclick="Incluir()" class="btn btn-primary">Incluir</button>
                             </span>
                         </div>
                     </div>

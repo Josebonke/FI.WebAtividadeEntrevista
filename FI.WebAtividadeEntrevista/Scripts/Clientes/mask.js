@@ -10,7 +10,7 @@
             .replace(/(\d{3})(\d{2})$/, '$1-$2')
     })
 
-    document.getElementById('cpf-Beneficiario').addEventListener('input', function (e) {
+    document.getElementById('cpfBeneficiario').addEventListener('input', function (e) {
         let value = e.target.value.replace(/\D/g, '')
         if (value.length > 11) {
             value = value.slice(0, 11)
