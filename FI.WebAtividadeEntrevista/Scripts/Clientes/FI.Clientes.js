@@ -155,7 +155,13 @@ function ModalDialogBeneficiario() {
     });
 }
 
-
+var origem = '@ViewBag.Title';
+if (origem === 'Alterar Cliente') {
+    document.getElementById('abriBeneficiarios').style.display = 'block';
+}
+else {
+    document.getElementById('abriBeneficiarios').style.display = 'none'
+}
 
 function opcaoSim() {
     ModalDialogBeneficiario()
