@@ -1,0 +1,54 @@
+﻿
+
+    @*<head>
+        <link rel="stylesheet" href="~/Content/Site.css" asp-append-version="true" />
+    </head>*@
+<body>
+    <script src="~/Scripts/Clientes/mask.js" asp-append-version="true"></script>
+    <div id="modalBeneficiarios" class="modal fade">
+        <div class="modal-dialog">
+            <div class="dialog-content">
+                <div class="dialog-header">
+                    <h4 class="modal-title">Beneficiários</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="dialog-body">
+                    <div class="dialog-form-group">
+                        <span class="input-cpf">
+                            <label class="label-cpf" for="cpf">CPF:</label>
+                            <input required="required"
+                                   type="text"
+                                   class="form-control"
+                                   id="cpf-Beneficiario"
+                                   name="cpf-Beneficiario"
+                                   placeholder="Ex.: 010.011.111-100" maxlength="15">
+                        </span>
+                        <span class="input-nome">
+                            <label class="label-cpf" for="Nacionalidade">Nacionalidade:</label>
+                            <input required="required"
+                                   type="text"
+                                   class="form-control"
+                                   id="Nacionalidade"
+                                   name="Nacionalidade"
+                                   placeholder="Ex.: brasileira"
+                                   maxlength="50">
+                        </span>
+                        <span class="btn-incluir">
+                            <button class="btn btn-md btn-success" onclick="salvar()">Incluir</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+    
+    
+
+

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebAtividadeEntrevista.Models.BeneficiarioModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Detalhes</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var beneficiario in Model)
+        {
+            <tr>
+                <td>@beneficiario.Nome</td>
+                <td>@beneficiario.CPF</td>
+                <td>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-url="@Url.Action("Detalhes", "Beneficiarios", new { id = beneficiario.Id })">
+                        Detalhes
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+<script>$(document).ready(function() {
+        $('.btn-primary').on('click', function() {
+            var url = $(this).data('url');
+            $('#myModal .modal-content').load(url);
+        });
+    });</script>

@@ -1,9 +1,8 @@
-﻿@*<head>
+﻿
+
+    @*<head>
         <link rel="stylesheet" href="~/Content/Site.css" asp-append-version="true" />
     </head>*@
-
-
-
 <body>
     <script src="~/Scripts/Clientes/mask.js" asp-append-version="true"></script>
     <form id="formCadastro" method="post">
@@ -78,7 +77,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label for="Email">E-mail:</label>
                     <input required="required" type="text" class="form-control" id="Email" name="Email" placeholder="Ex.: email@email.com" maxlength="2079">
@@ -95,10 +94,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="pull-left">
-                    <button type="button" class="btn btn-sm btn-primary"onclick="AbriModalBeneficiarios()">Beneficiários</button>
+
+                    @Html.ActionLink("Beneficiário", "#", null, new { @class = "btn btn-sm btn-primary", data_toggle = "modal", data_target = "#modalBeneficiarios" })
+
+
                 </div>
                 <div class="pull-right">
-                    <button class="btn btn-sm btn-success" onclick="abrirDialogo()">Salvar</button>
+                    <button type="submit" class="btn btn-sm btn-success">Salvar</button>
                     @Html.ActionLink("Voltar", "Index", "Cliente", new { }, new { @class = "btn btn-sm btn-danger" })
                 </div>
             </div>
@@ -107,5 +109,51 @@
 
     </form>
 
+    <form id="formCadastroBeneficiario" method="post">
+        <div id="modalBeneficiarios" class="modal fade">
+            <div class="modal-dialog">
+                <div class="dialog-content">
+                    <div class="dialog-header">
+                        <h4 class="modal-title">Beneficiários</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="dialog-body">
+                        <div class="dialog-form-group">
+                            <span class="input-cpf">
+                                <label class="label-cpf" for="cpf">CPF:</label>
+                                <input required="required"
+                                       type="text"
+                                       class="form-control"
+                                       id="cpf-Beneficiario"
+                                       name="cpf-Beneficiario"
+                                       placeholder="Ex.: 010.011.111-100" maxlength="15">
+                            </span>
+                            <span class="input-nome">
+                                <label class="label-cpf" for="Nome">Nome:</label>
+                                <input required="required"
+                                       type="text"
+                                       class="form-control"
+                                       id="Nome"
+                                       name="Nome"
+                                       placeholder="Ex.: João Souza"
+                                       maxlength="50">
+                            </span>
+                            <span class="btn-incluir">
+                                <button type ="submit" class="btn btn-md btn-success">Incluir</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 </body>
+
+
+    
+    
+
 
