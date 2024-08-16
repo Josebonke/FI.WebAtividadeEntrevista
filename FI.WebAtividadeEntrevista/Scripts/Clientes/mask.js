@@ -1,7 +1,8 @@
 ﻿document.addEventListener('DOMContentLoaded', function () {
    
+  
     document.getElementById('Cpf').addEventListener('input', function (e) {
-        let value = e.target.value.replace(/\D/g, '') 
+        let value = e.target.value.replace(/\D/g, '')
         if (value.length > 11) {
             value = value.slice(0, 11)
         }
@@ -44,3 +45,7 @@
    
 })
 
+  $(document).ready(function () {
+        // Apply mask to both main form and modal CPF inputs
+        $('.cpf-mask').mask('000.000.000-00');
+    });

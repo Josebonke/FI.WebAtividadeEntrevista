@@ -7,7 +7,7 @@ namespace FI.AtividadeEntrevista.DAL
 {
     internal class AcessoDados
     {
-        private string stringDeConexao
+        private string StringDeConexao
         {
             get
             {
@@ -22,7 +22,7 @@ namespace FI.AtividadeEntrevista.DAL
         internal void Executar(string NomeProcedure, List<SqlParameter> parametros)
         {
             SqlCommand comando = new SqlCommand();
-            SqlConnection conexao = new SqlConnection(stringDeConexao);
+            SqlConnection conexao = new SqlConnection(StringDeConexao);
             comando.Connection = conexao;
             comando.CommandType = CommandType.StoredProcedure;
             comando.CommandText = NomeProcedure;
@@ -43,7 +43,7 @@ namespace FI.AtividadeEntrevista.DAL
         internal DataSet Consultar(string NomeProcedure, List<SqlParameter> parametros)
         {
             SqlCommand comando = new SqlCommand();
-            SqlConnection conexao = new SqlConnection(stringDeConexao);
+            SqlConnection conexao = new SqlConnection(StringDeConexao);
 
             comando.Connection = conexao;
             comando.CommandType = CommandType.StoredProcedure;
