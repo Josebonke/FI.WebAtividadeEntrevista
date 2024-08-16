@@ -4,23 +4,11 @@
 }
 @section scripts{
     <script>
-    var urlPost = '@Url.Action("Alterar", "Cliente", new { area = "" })';
-    var obj = @Html.Raw(Json.Encode(Model)); // Supondo que Model contenha o cliente a ser editado
-    var clienteId = @Model.Id; // Assumindo que o modelo tem uma propriedade Id
-
-    // Função para enviar o formulário
-   
-    
+        var urlPost = '@Url.Action("Alterar", "Cliente", new { area = "" })';
+        var obj = @Html.Raw(Json.Encode(Model));
+        var urlRetorno = '@Url.Action("Index", "Cliente", new { area = "" })';
     </script>
     @Scripts.Render("~/bundles/altClientes")
 }
 <h2>@Html.Raw(ViewBag.Title)</h2>
-
-@using (Html.BeginForm("Alterar", "Cliente", FormMethod.Post, new { id = "formCliente" }))
-{
-    @Html.AntiForgeryToken()
-    @Html.Hidden("Id", Model.Id) // Campo oculto para passar o ID do cliente
-    // ... demais campos do formulário ...
-
-    <button type="button" onclick="salvar()">Salvar</button>
-}
+@Html.Partial("Forms")
