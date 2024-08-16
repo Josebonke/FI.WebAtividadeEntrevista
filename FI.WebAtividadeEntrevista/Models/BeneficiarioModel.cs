@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FI.AtividadeEntrevista.DML;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -45,4 +46,17 @@ namespace WebAtividadeEntrevista.Models
             this.Id = dto.Id;
         }
     }
+    
+    public class BeneficiarioFiltro
+    {
+        public long Id { get; set; }= long.MinValue;    
+        public long IdCliente { get; set; }= long.MinValue; 
+        public string Cpf { get; set; }  = string.Empty;
+       
+
+       
+
+    }
+
+
 }

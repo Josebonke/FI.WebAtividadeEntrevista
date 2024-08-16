@@ -1,4 +1,4 @@
-﻿
+﻿ let idCliente = localStorage.getItem('idCliente')
 function Incluir() {
     var formData = $('#formCadastroBeneficiario').serialize();
 
@@ -20,17 +20,26 @@ function Incluir() {
             alert('Erro ao incluir beneficiário!');
         }
 
-    });
-
-    
+    });    
 
 }
 
-$(document).ready(function () {
-    // Apply mask to both main form and modal CPF inputs
-    $('.cpf-mask').mask('000.000.000-00');
-   
-});
+function loadBeneficiarios(idCliente) {
+
+    $.ajax({
+        type: 'GET',
+        url: `/Beneficiarios/Listar`, // URL do endpoint
+        data: { idCliente: localStorage.getItem('idCliente') }, // Passando idCliente via query string
+        success: function (data) {
+            // Atualizar o conteúdo do modal com os dados dos beneficiários
+            console.log('Beneficiários carregados:', data);
+            // Lógica para atualizar a UI com os beneficiários aqui...
+        },
+        error: function (error) {
+            console.error('Erro ao carregar beneficiários:', error);
+        }
+    })
+}
 
 
 

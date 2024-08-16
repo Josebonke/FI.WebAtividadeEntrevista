@@ -1,163 +1,162 @@
-﻿
-
-    @*<head>
+﻿@*<head>
         <link rel="stylesheet" href="~/Content/Site.css" asp-append-version="true" />
     </head>*@
 
 
 
-    <script src="~/Scripts/Clientes/mask.js" asp-append-version="true"></script>
-   <script src="~/Scripts/Clientes/Beneficiarios/FI.Beneficiarios.js"></script>
-    <form id="formCadastro" method="post">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="Nome">Nome:</label>
-                    <input required="required" type="text" class="form-control" id="Nome" name="Nome" placeholder="Ex.: João" maxlength="50">
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="Sobrenome">Sobrenome:</label>
-                    <input required="required" type="text" class="form-control" id="Sobrenome" name="Sobrenome" placeholder="Ex.: da Silva" maxlength="255">
-                </div>
+<script src="~/Scripts/Clientes/mask.js" asp-append-version="true"></script>
+<script src="~/Scripts/Clientes/Beneficiarios/FI.Beneficiarios.js"></script>
+<form id="formCadastro" method="post">
+    <label id="id"></label>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="Nome">Nome:</label>
+                <input required="required" type="text" class="form-control" id="Nome" name="Nome" placeholder="Ex.: João" maxlength="50">
             </div>
         </div>
 
-
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="cpf">CPF:</label>
-                    <input required="required" type="text" class="form-control cpf-mask" id="Cpf" name="Cpf" placeholder="Ex.: 010.011.111-100">
-                </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="Sobrenome">Sobrenome:</label>
+                <input required="required" type="text" class="form-control" id="Sobrenome" name="Sobrenome" placeholder="Ex.: da Silva" maxlength="255">
             </div>
+        </div>
+    </div>
 
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="Nacionalidade">Nacionalidade:</label>
-                    <input required="required" type="text" class="form-control" id="Nacionalidade" name="Nacionalidade" placeholder="Ex.: brasileira" maxlength="50">
-                </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="cpf">CPF:</label>
+                <input required="required" type="text" class="form-control cpf-mask" id="Cpf" name="Cpf" placeholder="Ex.: 010.011.111-100">
             </div>
         </div>
 
-
-
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="CEP">CEP:</label>
-                    <input required="required" type="text" class="form-control" id="CEP" name="CEP" placeholder="Ex.: 01011-100" maxlength="9">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="Estado">Estado:</label>
-                    <select required="required" id="Estado" class="form-control" name="Estado">
-                        <option value="">Selecione</option>
-                        <option value="SP">São Paulo</option>
-                        <option value="PE">Pernambuco</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="Cidade">Cidade:</label>
-                    <input required="required" type="text" class="form-control" id="Cidade" name="Cidade" maxlength="50" placeholder="Ex.: São Paulo">
-                </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="Nacionalidade">Nacionalidade:</label>
+                <input required="required" type="text" class="form-control" id="Nacionalidade" name="Nacionalidade" placeholder="Ex.: brasileira" maxlength="50">
             </div>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label for="Logradouro">Logradouro:</label>
-                    <input required="required" type="text" class="form-control" id="Logradouro" name="Logradouro" placeholder="Ex.: Rua Boa Vista 253" maxlength="500">
-                </div>
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="CEP">CEP:</label>
+                <input required="required" type="text" class="form-control" id="CEP" name="CEP" placeholder="Ex.: 01011-100" maxlength="9">
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="Email">E-mail:</label>
-                    <input required="required" type="text" class="form-control" id="Email" name="Email" placeholder="Ex.: email@email.com" maxlength="2079">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="Telefone">Telefone:</label>
-                    <input required="required" type="tel" class="form-control" id="Telefone" name="Telefone" placeholder="Ex.: (11) 2020-3030" maxlength="15">
-                </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="Estado">Estado:</label>
+                <select required="required" id="Estado" class="form-control" name="Estado">
+                    <option value="">Selecione</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="PE">Pernambuco</option>
+                </select>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-lg-12">
-               
-                <div class="pull-left">
-
-                    @Html.ActionLink("Beneficiário", "#", null, new { @class = "btn btn-sm btn-primary", data_toggle = "modal", data_target = "#modalBeneficiarios" })
-                </div>
-
-               
-                <div class="pull-right">
-                    <button type="submit" class="btn btn-sm btn-success">Salvar</button>
-                    @Html.ActionLink("Voltar", "Index", "Cliente", new { }, new { @class = "btn btn-sm btn-danger" })
-                </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="Cidade">Cidade:</label>
+                <input required="required" type="text" class="form-control" id="Cidade" name="Cidade" maxlength="50" placeholder="Ex.: São Paulo">
             </div>
         </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="Logradouro">Logradouro:</label>
+                <input required="required" type="text" class="form-control" id="Logradouro" name="Logradouro" placeholder="Ex.: Rua Boa Vista 253" maxlength="500">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="Email">E-mail:</label>
+                <input required="required" type="text" class="form-control" id="Email" name="Email" placeholder="Ex.: email@email.com" maxlength="2079">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="Telefone">Telefone:</label>
+                <input required="required" type="tel" class="form-control" id="Telefone" name="Telefone" placeholder="Ex.: (11) 2020-3030" maxlength="15">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="pull-left">
+
+                @Html.ActionLink("Beneficiário", "#", null, new { @class = "btn btn-sm btn-primary", data_toggle = "modal", data_target = "#modalBeneficiarios", onclick = "loadBeneficiarios()" })
+            </div>
 
 
-    </form>
+            <div class="pull-right">
+                <button type="submit" class="btn btn-sm btn-success">Salvar</button>
+                @Html.ActionLink("Voltar", "Index", "Cliente", new { }, new { @class = "btn btn-sm btn-danger" })
+            </div>
+        </div>
+    </div>
 
-    <form id="formCadastroBeneficiario" method="post">
-        <div id="modalBeneficiarios" class="modal fade">
-            <div class="modal-dialog">
-                <div class="dialog-content">
-                    <div class="dialog-header">
-                        <h4 class="modal-title">Beneficiários</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    </div>
-                    <div class="dialog-body">
-                        <div class="dialog-form-group">
-                            <span class="input-cpf">
-                                <label class="label-cpf" for="cpf">CPF:</label>
-                                <input required="required"
-                                       type="text"
-                                       class="form-control cpf-mask"
-                                       id="cpfBeneficiario"
-                                       name="cpfBeneficiario"
-                                       placeholder="Ex.: 010.011.111-100" maxlength="15">
-                            </span>
-                            <span class="input-nome">
-                                <label class="label-cpf" for="Nome">Nome:</label>
-                                <input required="required"
-                                       type="text"
-                                       class="form-control"
-                                       id="Nome"
-                                       name="Nome"
-                                       placeholder="Ex.: João Souza"
-                                       maxlength="50">
-                            </span>
-                            <span class="btn-incluir">
-                                <button type="button" id="btnIncluir" onclick="Incluir()" class="btn btn-primary">Incluir</button>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+
+</form>
+
+<form id="formCadastroBeneficiario" method="post">
+    <div id="modalBeneficiarios" class="modal fade">
+        <div class="modal-dialog">
+            <div class="dialog-content">
+                <div class="dialog-header">
+                    <h4 class="modal-title">Beneficiários</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="dialog-body">
+                    <div class="dialog-form-group">
+                        <span class="input-cpf">
+                            <label class="label-cpf" for="cpf">CPF:</label>
+                            <input required="required"
+                                   type="text"
+                                   class="form-control cpf-mask"
+                                   id="cpfBeneficiario"
+                                   name="cpfBeneficiario"
+                                   placeholder="Ex.: 010.011.111-100" maxlength="15">
+                        </span>
+                        <span class="input-nome">
+                            <label class="label-cpf" for="Nome">Nome:</label>
+                            <input required="required"
+                                   type="text"
+                                   class="form-control"
+                                   id="Nome"
+                                   name="Nome"
+                                   placeholder="Ex.: João Souza"
+                                   maxlength="50">
+                        </span>
+                        <span class="btn-incluir">
+                            <button type="button" id="btnIncluir" onclick="Incluir()" class="btn btn-primary">Incluir</button>
+                        </span>
                     </div>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
             </div>
         </div>
-    </form>
+    </div>
+</form>
 
 
 
-    
-    
+
+
 
 

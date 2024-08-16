@@ -15,4 +15,13 @@ namespace FI.AtividadeEntrevista.DML
 
         public Beneficiario() { }
     }
+
+    public class BeneficiarioFilter
+    {
+        public long Id { get; set; } = 0;
+        public long IdCliente { get; set; } = 0;
+        public string Cpf { get; set; } = string.Empty;
+
+        public BeneficiarioFilter() { }
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using FI.AtividadeEntrevista.DML;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -14,14 +15,14 @@ namespace FI.AtividadeEntrevista.DAL
         /// Inclui um novo cliente
         /// </summary>
         /// <param name="cliente">Objeto de cliente</param>
-        internal long Incluir(DML.Beneficiario beneficiario)
+        public long Incluir(DML.Beneficiario beneficiario)
         {
            
             List<System.Data.SqlClient.SqlParameter> parametros = new List<System.Data.SqlClient.SqlParameter>()
             {
                 new System.Data.SqlClient.SqlParameter("Nome", beneficiario.Nome),               
                 new System.Data.SqlClient.SqlParameter("Cpf", beneficiario.Cpf),               
-                new System.Data.SqlClient.SqlParameter("idCliente", 1),
+                new System.Data.SqlClient.SqlParameter("idCliente", beneficiario.IdCliente),
                 
             };
 
@@ -31,7 +32,40 @@ namespace FI.AtividadeEntrevista.DAL
                 long.TryParse(ds.Tables[0].Rows[0][0].ToString(), out ret);
             return ret;
         }
-       
-        
+
+        public List<Beneficiario> Listar(DML.BeneficiarioFilter filter)
+        {
+
+            List<System.Data.SqlClient.SqlParameter> parametros = new List<System.Data.SqlClient.SqlParameter>()
+            {
+                new System.Data.SqlClient.SqlParameter("id", filter.Id),              
+                new System.Data.SqlClient.SqlParameter("idCliente", filter.IdCliente),
+
+            };
+
+            DataSet ds = base.Consultar("FI_SP_ConsBeneficiario", parametros);
+
+            
+            List<DML.Beneficiario> grid = new List<DML.Beneficiario>();
+
+            
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    
+                    DML.Beneficiario beneficiario = new DML.Beneficiario
+                    {
+                        Id = Convert.ToInt64(row["Id"]),
+                        Nome = row["Nome"].ToString(),
+                        Cpf = row["CPF"].ToString(),                       
+                    };
+                    grid.Add(beneficiario);
+                }
+            }
+            return grid;
+        }
+
     }
 }
