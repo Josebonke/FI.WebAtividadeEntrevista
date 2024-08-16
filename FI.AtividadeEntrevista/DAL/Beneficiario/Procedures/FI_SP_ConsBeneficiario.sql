@@ -1,0 +1,17 @@
+﻿CREATE PROC FI_SP_ConsBeneficiario
+	@ID BIGINT = 0,
+	@IDCliente BIGINT = 0
+AS
+BEGIN
+	
+	SELECT 
+	ID,
+	CPF,
+	NOME,
+	IDCLIENTE 
+	FROM BENEFICIARIOS
+	WHERE  
+	id = @id OR ISNULL(@id,0) = 0 
+	OR IDCLIENTE = @IDCliente OR ISNULL(@IDCliente,0) =0
+
+END
