@@ -13,7 +13,7 @@ namespace WebAtividadeEntrevista.Models
     public class BeneficiarioModelDto
     {
         public long Id { get; set; } = long.MinValue;
-        public long IdCliente { get; set; } = long.MinValue;
+        public string IdCliente { get; set; } = "";
 
         /// <summary>
         /// CEP
@@ -41,7 +41,7 @@ namespace WebAtividadeEntrevista.Models
         public BeneficiarioModel(BeneficiarioModelDto dto)
         {
             this.Cpf = dto.CpfBeneficiario.Replace(".", "").Replace("-", "");
-            this.IdCliente = dto.IdCliente;
+            this.IdCliente = Convert.ToInt64(dto.IdCliente);
             this.Nome = dto.Nome;
             this.Id = dto.Id;
         }

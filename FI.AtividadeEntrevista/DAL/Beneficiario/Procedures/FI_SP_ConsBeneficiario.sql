@@ -1,17 +1,20 @@
-﻿CREATE PROC FI_SP_ConsBeneficiario
+﻿alter PROC FI_SP_ConsBeneficiario
 	@ID BIGINT = 0,
-	@IDCliente BIGINT = 0
+	@IDCliente BIGINT = 0,
+	@CpfCliente  VARCHAR(11) = ''
 AS
 BEGIN
 	
 	SELECT 
-	ID,
-	CPF,
-	NOME,
-	IDCLIENTE 
-	FROM BENEFICIARIOS
+	BEN.ID,
+	BEN.CPF,
+	BEN.NOME,
+	BEN.IDCLIENTE 
+	FROM BENEFICIARIOS BEN
+	INNER JOIN CLIENTES CLI ON CLI.ID = BEN.IDCLIENTE
 	WHERE  
-	id = @id OR ISNULL(@id,0) = 0 
-	OR IDCLIENTE = @IDCliente OR ISNULL(@IDCliente,0) =0
+	BEN.id = @id OR ISNULL(@id,0) = 0 
+	AND IDCLIENTE = @IDCliente OR ISNULL(@IDCliente,0) = 0
+	AND CLI.CPF = @CpfCliente OR ISNULL(@CpfCliente,'') = ''
 
 END

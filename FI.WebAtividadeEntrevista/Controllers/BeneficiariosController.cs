@@ -33,8 +33,8 @@ namespace WebAtividadeEntrevista.Controllers
 
             BeneficiarioModel model = new BeneficiarioModel(dto);
             BeneficiarioFilter filter = new BeneficiarioFilter();
-            filter.Cpf = model.Cpf;
-            filter.IdCliente = dto.IdCliente;
+            filter.CpfCliente = model.Cpf;
+            filter.IdCliente = model.IdCliente;
             if (!this.ModelState.IsValid)
             {
                 List<string> erros = (from item in ModelState.Values
@@ -51,7 +51,8 @@ namespace WebAtividadeEntrevista.Controllers
             }
             else
             {
-                bo.Incluir(new Beneficiario()
+
+                model.Id = bo.Incluir(new Beneficiario()
                 {
                     Id = model.Id,
                     Nome = model.Nome,
@@ -59,18 +60,18 @@ namespace WebAtividadeEntrevista.Controllers
                     IdCliente = model.IdCliente
                 });
             }
-            return Json("Cadastro efetuado com sucesso");
+            return Json(model);
         }
 
 
         [HttpGet]
-        public JsonResult Listar(long idCliente)
+        public JsonResult Listar(string CpfCliente)
         {
             try
             {
                 BeneficiarioFilter beneficiarioFilter = new BeneficiarioFilter
                 {
-                    IdCliente = idCliente
+                    CpfCliente = CpfCliente.Replace(".", "").Replace("-", "")
                 };
                 List<Beneficiario> beneficiarios = new BoBeneficiario().Listar(beneficiarioFilter);
 
