@@ -58,7 +58,8 @@ namespace FI.AtividadeEntrevista.DAL
                     DML.Beneficiario beneficiario = new DML.Beneficiario
                     {
                         Id = Convert.ToInt64(row["Id"]),
-                        Nome = row["Nome"].ToString(),
+                        IdCliente = Convert.ToInt64(row["IDCLIENTE"]),
+                        Nome = row["NOME"].ToString(),
                         Cpf = row["CPF"].ToString(),                       
                     };
                     grid.Add(beneficiario);

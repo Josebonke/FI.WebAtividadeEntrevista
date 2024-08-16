@@ -1,7 +1,8 @@
-﻿ let idCliente = localStorage.getItem('idCliente')
+﻿let idCliente = localStorage.getItem('IdCliente')
+localStorage.removeItem('IdCliente')
 function Incluir() {
     var formData = $('#formCadastroBeneficiario').serialize();
-
+    formData += '&idCliente=' + encodeURIComponent(idCliente);
     $.ajax({
         type: 'POST',
         url: '/Beneficiarios/Incluir',
@@ -24,14 +25,14 @@ function Incluir() {
 
 }
 
-function loadBeneficiarios(idCliente) {
+function loadBeneficiarios() {
 
     $.ajax({
         type: 'GET',
-        url: `/Beneficiarios/Listar`, // URL do endpoint
-        data: { idCliente: localStorage.getItem('idCliente') }, // Passando idCliente via query string
+        url: `/Beneficiarios/Listar`,
+        data: { idCliente: localStorage.getItem('idCliente') },
         success: function (data) {
-            // Atualizar o conteúdo do modal com os dados dos beneficiários
+            
             console.log('Beneficiários carregados:', data);
             // Lógica para atualizar a UI com os beneficiários aqui...
         },

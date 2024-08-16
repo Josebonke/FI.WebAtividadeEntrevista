@@ -65,13 +65,13 @@ namespace WebAtividadeEntrevista.Controllers
 
 
         [HttpGet]
-        public JsonResult Listar(string CpfCliente)
+        public JsonResult Listar(long idCliente)
         {
             try
             {
                 BeneficiarioFilter beneficiarioFilter = new BeneficiarioFilter
                 {
-                    CpfCliente = CpfCliente.Replace(".", "").Replace("-", "")
+                    IdCliente = idCliente
                 };
                 List<Beneficiario> beneficiarios = new BoBeneficiario().Listar(beneficiarioFilter);
 

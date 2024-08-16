@@ -11,7 +11,7 @@ $(document).ready(function () {
         $('#formCadastro #Logradouro').val(obj.Logradouro);
         $('#formCadastro #Cpf').val(obj.Cpf);
         $('#formCadastro #Telefone').val(obj.Telefone);
-        localStorage.setItem('idCliente', obj.Id)
+        localStorage.setItem('IdCliente', obj.Id)
     }
 
     $('#formCadastro').submit(function (e) {
