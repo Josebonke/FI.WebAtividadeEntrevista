@@ -1,5 +1,4 @@
 ﻿
-let idCliente = 0
 $(document).ready(function () {
     $('#formCadastro').submit(function (e) {
         e.preventDefault();
@@ -30,10 +29,9 @@ $(document).ready(function () {
 
                 },
             success:
-                function (r) {
-                    idCliente = r.Id
+                function (r) {                    
                     localStorage.setItem('idCliente', r.Id)
-                    ModalDialog("Sucesso!", `Código: ${r.Id}-${r.Nome} Cadastrado`)
+                    ModalDialog("Sucesso!",`Código: #${r.Id}-${r.Nome} Cadastrado`)
                    
                    
                 }
